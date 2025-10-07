@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5; /* Light gray background */
+    color: #333; /* Dark text for readability */
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    display: grid;
+    /* Sidebar (fixed width) and Main Content (takes remaining space) */
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+     width: 100vw;
+}
+
+.sidebar {
+    background-color: #007bff; /* Primary blue */
+    color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 50px;
+}
+
+.sidebar li a {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.sidebar li a i {
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+    font-size: 1.25rem;
+}
+
+.sidebar li a:hover {
+    background-color: #0056b3; /* Darker blue for hover */
+}
+
+.main-content {
+display: grid;
+grid-column: 2 / 3;
+grid-template-columns: 3fr 1fr;
+ grid-template-areas:
+        "header header"
+        "title-projects title-announcements"
+        "projects announcements"
+        "projects trending";
+gap: 20px;
+
+
+}
+
+
+/* Assuming you have a <header> element in your HTML */.
+.header {
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+.header-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    grid-column: 1 / span 2; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.search-area i {
+    color: #6c757d; /* Gray for secondary text/icons */
+    font-size: 1.2rem;
+}
+
+.search-area .search-input {
+    height: 35px;
+    width: 400px;
+    background-color: #f0f2f5;
+    border: none;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-actions .profile-avatar-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f7e096; /* Yellow placeholder for avatar */
+    border: 2px solid #007bff;
+}
+
+.user-actions .user-name {
+    font-weight: 700;
+}
+
+.header-greeting-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    grid-column: 1 / span 2; 
+    border-bottom: 1px solid #e9ecef;
+}
+
+.greeting-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.greeting-info .avatar-large {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #f7e096; /* Yellow placeholder for avatar */
+    border: 3px solid #007bff;
+}
+
+.greeting-text .hi-there {
+    display: block;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.greeting-text .user-handle {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #fff;
+}
+
+.action-buttons .btn-new { background-color: #007bff; }
+.action-buttons .btn-upload { background-color: #6c757d; }
+.action-buttons .btn-share { background-color: #28a745; }
+
+/* Grid area placement for titles */
+.main-content > .section-title:nth-of-type(1) {
+    grid-area: title-projects;
+}
+.main-content > .section-title:nth-of-type(2) {
+    grid-area: title-announcements;
+}
+
+
+/* --- Projects Grid --- */
+.project-cards {
+    grid-area: projects;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Change border color to Primary Blue to match the original image */
+    border-left: 8px solid #FAD6BF; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+
+
+.card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.card-footer i {
+    color: #6c757d;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.card-footer i:hover {
+    color: #007bff;
+}
+
+
+
+
+/* --- Announcements & Trending --- */
+.Announcements {
+    grid-area: announcements;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.Announcements .section-title {
+    margin-bottom: 10px;
+}
+
+.Announcement-item {
+    padding: 15px 0;
+}
+
+.Announcement-item:not(:last-child) {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.Announcement-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.Announcement-item p {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.Trending {
+    grid-area: trending;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.Trending .section-title {
+    margin-bottom: 10px;
+}
+
+.Trending-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.Trending-item .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* Use different colors for visual distinction */
+    background-color: #f7e096; /* Default yellow */
+}
+.Trending-item:nth-child(2) .avatar { background-color: #a29bfe; /* Purple */ }
+.Trending-item:nth-child(3) .avatar { background-color: #74b9ff; /* Light blue */ }
+.Trending-item:nth-child(4) .avatar { background-color: #55efc4; /* Green */ }
+
+.Trending-item .user-info span {
+    display: block;
+}
+
+.Trending-item .user-info .handle {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #007bff;
+}
+
+.Trending-item .user-info .project {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
